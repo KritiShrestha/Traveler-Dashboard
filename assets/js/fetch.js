@@ -8,8 +8,11 @@ function getWeatherApi () {
         .then(function(data) {
             console.log(data);
 
+            var lat= data.latitude;
+            var lon= data.longitude;
+
             appendWeather(data);
-            getMapApi(data);
+            getMapApi(lat, lon);
         })
 }
 
@@ -21,11 +24,12 @@ function appendWeather(data) {
     temp.text(data.current_weather.temperature);
 }
 
-function getMapApi() {
-    //console.log(data.latitude, data.longitude);
+function getMapApi(lat, lon) {
+    //console.log(lat, lon);
     //var requestUrl2 = 'https://app.cartes.io/api/maps/048eebe4-8dac-46e2-a947-50b6b8062fec?lat=' + data.latitude + '&lng=' + data.longitude + '&zoom=8'
 
     var requestUrl2 = 'https://cartes.io/api/maps/048eebe4-8dac-46e2-a947-50b6b8062fec/markers'
+    //?lat=' + lat + '&lng=' + lon + '
 
     fetch(requestUrl2)
         .then(function(response) {
@@ -34,12 +38,23 @@ function getMapApi() {
         .then(function(data) {
             console.log(data);
         })
+}
 
+function getDestData() {
+    var DestDataUrl = 'https://api.teleport.org/api/urban_areas/slug:san-francisco-bay-area/scores/'
+    
+    fetch(DestDataUrl)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+        })
 }
 
 
 
 $(function() {
     getWeatherApi();
-   
+    getDestData()
 })
