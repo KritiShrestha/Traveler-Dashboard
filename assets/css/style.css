@@ -1,8 +1,59 @@
-.heading-1{
-    background-color: rgb(36, 133, 146);
-    color: azure;
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.details-container{
-    float: right;
+.heading-1 {
+    background-color: rgb(36, 133, 146);
+    color: azure;
+    padding: 50px;
+    text-align: center;
 }
+
+
+.destination-container {
+    width: 40%
+}
+
+.content.is-pulled-left.is-one-third.destination-container {
+    width: 15%;
+    padding: 30px;
+}
+
+.button.is-link.dest-btn {
+    width: 210px;
+}
+
+.buttons.is-flex-direction-column.mb-4.is-pulled-left {
+    gap: 33px;
+}
+
+.detail-container.column.is-two-thirds {
+    float: right;
+    width: 80%;
+}
+
+#map-container, #things-to-do-container {
+    height: 300px;
+  }
+
+  #map-container {
+    height: 300px;
+    width: 40%;
+    float: left;
+  }
+
+  #things-to-do-container {
+  width: 60%;
+  float: right;
+}
+
+#weather-container {
+    display: inline-block;
+    height: 400px;
+    text-align: center;
+    width: 85%;
+  }
+
+/* .weather-forecast{
+    float:right
+}  */
