@@ -50,7 +50,7 @@ function appendWeather(data) {
 
     // weather img
     weatherPic = $('#weather-pic')
-    
+
     
 }
 
