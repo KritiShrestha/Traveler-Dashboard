@@ -48,10 +48,10 @@ function appendWeather(data) {
        wind_direct.text('Wind Direction: W')
    }   
 
-   // weather img
-   weatherPic = $('#weather-pic')
-   
-   
+    // weather img
+    weatherPic = $('#weather-pic')
+
+    
 }
 
 

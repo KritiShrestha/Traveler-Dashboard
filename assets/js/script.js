@@ -187,9 +187,74 @@ function appendWeather(data) {
     // weather img
     weatherPic = $('#weather-pic')
     
+
+    displayForecast(data)
   
 }
+function displayForecast(data) {
+    console.log("display forecast works")
 
+    var fiveForecastEl = $('#fiveDayForecast');
+    
+    fiveForecastEl.empty();
+    
+    var fiveDayArray = data.hourly;
+		var forecast = [];
+		//Made a object that would allow for easier data read
+		$.each(fiveDayArray, function (index, value) {
+			testObj = {
+			    humidityRel: data.hourly.relativehumidity_2m,
+				temp_2m: data.hourly.temperature_2m,
+				time: data.hourly.time,
+                wind_10m: data.hourly.windspeed_10m
+			}
+
+            forecast.push(testObj)
+			
+		})
+
+        console.log(testObj)
+        console.log(forecast)
+	     //Inject the cards to the screen 
+		for (let i = 0; i < 5; i++) {
+
+		 	var divElCard = $('<div>');
+			divElCard.attr('class', 'card text-white bg-primary mb-3 cardOne');
+		 	divElCard.attr('style', 'max-width: 215px;');
+		 	fiveForecastEl.append(divElCard);
+
+		 	var divElHeader = $('<div>');
+		 	divElHeader.attr('class', 'card-header')
+		 	// var dayFormat = dayjs(`${forecast[i].date}`).format('MM-DD-YYYY');
+		 	// divElHeader.text(dayFormat);
+		 	// divElCard.append(divElHeader)
+
+		 	var divElBody = $('<div>');
+		 	divElBody.attr('class', 'card-body');
+		 	divElCard.append(divElBody);
+
+		 	var divElIcon = $('<img>');
+		 	divElIcon.attr('class', 'icons');
+		 	// divElIcon.attr('src', `https://openweathermap.org/img/wn/${forecast[i].icon}@2x.png`);
+		 	divElBody.append(divElIcon);
+
+		 	//Temp
+		 	var pElTemp = $('<p>').text('Temperature: ' + forecast[i].temp_2m.slice(0,5)[i] + ' °F');
+		 	divElBody.append(pElTemp);
+
+		 	//Humidity
+		 	var pElHumid = $('<p>').text('Humidity: ' + forecast[i].humidityRel.slice(0,5)[i] + ' %');
+		 	divElBody.append(pElHumid);
+
+             //Wind
+             var pwindEl = $('<p>').text('Wind: ' +  forecast[i].wind_10m.slice(0,5)[i] + ' MPH');
+             divElBody.append(pwindEl);
+
+             //Time
+             var ptimeEl = $('<p>').text('Time: ' + forecast[i].time.slice(0,5)[i])
+             divElBody.append(ptimeEl);
+        }
+}
 function getLocationFacts(city) {
     //converts the destination to lowercase letters which is needed for the API URL
     cityLowercase = city.toLowerCase()
