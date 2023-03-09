@@ -18,8 +18,11 @@ $(function() {
         //calls getGeocode function & passes the destClicked var
         getGeocode(destClicked)
 
-        //calls getLocationFacts using Teleport API and passed destClick var
+        //calls getLocationFacts function using Teleport API and passes destClick var
         getLocationFacts(destClicked)
+
+        //calls getCityPhotos function using Teleport API and passes destClick var
+        getCityPhotos(destClicked)
 
     });
     
@@ -163,23 +166,48 @@ function getLocationFacts(destClicked) {
             //logs the location facts url data
             console.log('location facts URL DATA: ✔️', data);
         
-        //
+        //get cost of living ranking and add text to the html page
         var costofLiving = data.categories[1]["score_out_of_10"];
         console.log("location facts DATA Cost of Living", costofLiving);     
         $('#cost-of-living').text("Cost of Living: " + costofLiving + " out of 10");
-        //
+        
+        //get commute ranking and add text to the html page
         var commute = data.categories[5]["score_out_of_10"];
         console.log("location facts DATA Commute", commute);   
         $('#commute').text("Commute: " + commute + " out of 10");
-        //
+        
+        //get safety ranking and add text to the html page
         var safety = data.categories[7]["score_out_of_10"];
         console.log("location facts DATA Safety", safety); 
         $('#safety').text("Safety: " + safety + " out of 10");
 
-        //
+        //get outoors ranking and add text to the html page
         var outdoors = data.categories[16]["score_out_of_10"];
         console.log("location facts DATA Outdoors", outdoors); 
         $('#outdoors').text("Outdoors: " + outdoors + " out of 10");
 
+        })
+
+}
+
+function getCityPhotos(destClicked) {
+     //converts the destination to lowercase letters which is needed for the API URL
+     destClickedLowercase = destClicked.toLowerCase()
+     var APIUrl= 'https://api.teleport.org/api/urban_areas/slug:'+ destClickedLowercase + "/images/"
+     console.log('getCityPhotos URL ✔️', APIUrl);
+ 
+     //fetches the location facts api url
+     fetch(APIUrl)
+         .then(function(response) {
+             return response.json();
+         })
+         .then(function(data) {
+             //logs the location facts url data
+             console.log('City Photos URL DATA: ✔️', data);
+        
+        //gets city image from API and adds to the html page
+        var cityimage = data.photos[0].image.mobile;
+        console.log("getCityPhotos DATA image", cityimage);
+        $('#city-image').attr("src", cityimage);
         })
 }
