@@ -61,7 +61,7 @@ function clickListener() {
         console.log('event.target ✔️', $(event.target).text())
 
         //saves new city to local storage 
-	    localStorage.setItem('city', JSON.stringify(city));
+	      localStorage.setItem('city', JSON.stringify(city));
     
         //calls getGeocode function & passes the city var
         getGeocode(city)
@@ -129,7 +129,6 @@ function getCoordinates(geonameID) {
         //calls the getWeatherApi function and passes the lat/lon vars
         getWeatherApi(lat, lon)
         })
-
 }    
 
 function getWeatherApi (lat, lon) {
@@ -188,7 +187,7 @@ function appendWeather(data) {
     // weather img
     weatherPic = $('#weather-pic')
     
-    
+  
 }
 
 function getLocationFacts(city) {
@@ -230,7 +229,6 @@ function getLocationFacts(city) {
         $('#outdoors').text("Outdoors: " + outdoors + " out of 10");
 
         })
-
 }
 
 function getCityPhotos(city) {
@@ -254,3 +252,4 @@ function getCityPhotos(city) {
         $('#city-image').attr("src", cityimage);
         })
 }
+
