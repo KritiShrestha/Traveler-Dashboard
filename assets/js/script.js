@@ -18,6 +18,9 @@ $(function() {
         //calls getGeocode function & passes the destClicked var
         getGeocode(destClicked)
 
+        //calls getLocationFacts using Teleport API and passed destClick var
+        getLocationFacts(destClicked)
+
     });
     
 })
@@ -48,7 +51,7 @@ function getGeocode(destClicked) {
             console.log('geoname ID ✔️', geonameID)
 
             //calls the getCoordinates function & passes the geonameID var
-            getCoordinates(geonameID);
+            getCoordinates(geonameID)
         })
 }
 
@@ -73,6 +76,12 @@ function getCoordinates(geonameID) {
         //creates a new var which holds the city's latitude aka the data's latitude property
         var lon= data.location.latlon.longitude;
         console.log('Longitude: ✔️', lon);
+
+        //creates a new var which holds they city's population data and adds text to html page
+        var population = data.population;
+        console.log('Population: ✔️', population);
+        $('#population').text("Population: " + population);
+
 
         //calls the getWeatherApi function
         getWeatherApi(lat, lon)
@@ -136,6 +145,41 @@ function appendWeather(data) {
 
     // weather img
     weatherPic = $('#weather-pic')
-    
-    
+      
+}
+
+function getLocationFacts(destClicked) {
+    //converts the destination to lowercase letters which is needed for the API URL
+    destClickedLowercase = destClicked.toLowerCase()
+    var APIUrl= 'https://api.teleport.org/api/urban_areas/slug:'+ destClickedLowercase + "/scores/"
+    console.log('getLocationFacts URL ✔️', APIUrl);
+
+    //fetches the location facts api url
+    fetch(APIUrl)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            //logs the location facts url data
+            console.log('location facts URL DATA: ✔️', data);
+        
+        //
+        var costofLiving = data.categories[1]["score_out_of_10"];
+        console.log("location facts DATA Cost of Living", costofLiving);     
+        $('#cost-of-living').text("Cost of Living: " + costofLiving + " out of 10");
+        //
+        var commute = data.categories[5]["score_out_of_10"];
+        console.log("location facts DATA Commute", commute);   
+        $('#commute').text("Commute: " + commute + " out of 10");
+        //
+        var safety = data.categories[7]["score_out_of_10"];
+        console.log("location facts DATA Safety", safety); 
+        $('#safety').text("Safety: " + safety + " out of 10");
+
+        //
+        var outdoors = data.categories[16]["score_out_of_10"];
+        console.log("location facts DATA Outdoors", outdoors); 
+        $('#outdoors').text("Outdoors: " + outdoors + " out of 10");
+
+        })
 }
