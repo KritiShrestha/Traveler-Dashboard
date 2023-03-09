@@ -252,4 +252,3 @@ function getCityPhotos(city) {
         $('#city-image').attr("src", cityimage);
         })
 }
-
