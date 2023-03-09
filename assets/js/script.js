@@ -1,30 +1,56 @@
+var city= "New York City"
+var cityHist = []
 
 //Initializes jQuery & waits for DOM elements to load
 $(function() {
     console.log("Page & jQuery initialized ✔️")
 
+    getExampleCity();
+
+    clickListener();
+
+	
+
+    // loadCities()
+    
+})
+
+function clickListener() {
     //references dest-button id from html
     var destBtn = $('.dest-btn')
 
     //adds event listener for destination button click
-    destBtn.click(function(event) {
+    destBtn.click(function (event) {
         console.log('button click event listener works ✔️')
         event.preventDefault()
 
         //creating var that specifies the text where the click event occurred
-        var destClicked = $(event.target).text();
+        var city = $(event.target).text();
         console.log('event.target ✔️', $(event.target).text())
 
-        //calls getGeocode function & passes the destClicked var
-        getGeocode(destClicked)
-
+        //calls getGeocode function & passes the city var
+        getGeocode(city)
     });
-    
-})
+}
 
-function getGeocode(destClicked) {
+//gets example city to display initially
+function getExampleCity() {
+
+    localStorage.setItem('city', JSON.stringify(city));
+
+    var cityHistStore = JSON.parse(localStorage.getItem('city'));
+    console.log('cityhiststore: ', cityHistStore)
+
+    // if (cityHistStore !== null) {
+	// 	cityHist = cityHistStore
+	// }
+
+    getGeocode(city);
+}
+
+function getGeocode(city) {
     //created a new var which strings together the base Teleport api url & the var destClicked var
-    var geocodeUrl= 'https://api.teleport.org/api/cities/?search=' + destClicked;
+    var geocodeUrl= 'https://api.teleport.org/api/cities/?search=' + city;
     //logs the whole url
     console.log('geocode url ✔️', geocodeUrl)
 
@@ -137,5 +163,7 @@ function appendWeather(data) {
     // weather img
     weatherPic = $('#weather-pic')
     
+    
+   
     
 }
