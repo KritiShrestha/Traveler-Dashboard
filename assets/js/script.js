@@ -1,19 +1,51 @@
-var city= "New York City"
-var cityHist = []
-
 //Initializes jQuery & waits for DOM elements to load
 $(function() {
     console.log("Page & jQuery initialized ✔️")
 
-    getExampleCity();
+    //calls the getInitialCity function
+    getInitialCity();
 
+    //calls the clickListener function
     clickListener();
-
-	
-
-    // loadCities()
-    
 })
+
+//gets initial city to display upon page load
+function getInitialCity() {
+    //retrieves any city saved in local storage and sets to a new var named cityStored
+    var cityStored = JSON.parse(localStorage.getItem("city"));
+    console.log("city stored: ", cityStored);
+
+  //makes sure there is at least one city to display initially
+    if (cityStored === null) {
+        //sets default city to Atlanta if there is no city saved to local storage
+        var city = "Atlanta";
+        console.log("default city: ", city);
+        //saves the var city to local storage
+        localStorage.setItem('city', JSON.stringify(city));
+
+        //calls getGeocode function & passes the city var
+        getGeocode(city);
+
+        //calls getLocationFacts using Teleport API and passed city var
+        getLocationFacts(city);
+
+        //calls getCityPhotos function using Teleport API and passes city var
+        getCityPhotos(city);
+
+        //if local storage is not null, then the city var is set to the city already stored
+    } else if (cityStored !== null) {
+        city = cityStored;
+
+        //calls getGeocode function & passes the city var
+        getGeocode(city);
+
+        //calls getLocationFacts using Teleport API and passed city var
+        getLocationFacts(city);
+
+        //calls getCityPhotos function using Teleport API and passes city var
+        getCityPhotos(city);
+    }
+}
 
 function clickListener() {
     //references dest-button id from html
@@ -28,28 +60,22 @@ function clickListener() {
         var city = $(event.target).text();
         console.log('event.target ✔️', $(event.target).text())
 
+        //saves new city to local storage 
+	    localStorage.setItem('city', JSON.stringify(city));
+    
         //calls getGeocode function & passes the city var
         getGeocode(city)
+        
+        //calls getLocationFacts using Teleport API and passed city var
+        getLocationFacts(city)
+        
+        //calls getCityPhotos function using Teleport API and passes city var
+        getCityPhotos(city)
     });
 }
 
-//gets example city to display initially
-function getExampleCity() {
-
-    localStorage.setItem('city', JSON.stringify(city));
-
-    var cityHistStore = JSON.parse(localStorage.getItem('city'));
-    console.log('cityhiststore: ', cityHistStore)
-
-    // if (cityHistStore !== null) {
-	// 	cityHist = cityHistStore
-	// }
-
-    getGeocode(city);
-}
-
 function getGeocode(city) {
-    //created a new var which strings together the base Teleport api url & the var destClicked var
+    //created a new var which strings together the base Teleport api url & the city var
     var geocodeUrl= 'https://api.teleport.org/api/cities/?search=' + city;
     //logs the whole url
     console.log('geocode url ✔️', geocodeUrl)
@@ -100,7 +126,7 @@ function getCoordinates(geonameID) {
         var lon= data.location.latlon.longitude;
         console.log('Longitude: ✔️', lon);
 
-        //calls the getWeatherApi function
+        //calls the getWeatherApi function and passes the lat/lon vars
         getWeatherApi(lat, lon)
         })
 
@@ -122,7 +148,6 @@ function getWeatherApi (lat, lon) {
 
             //calls appenWeather function & passes data
             appendWeather(data);
-            // getMapApi(lat, lon);
         })
 }
 
@@ -164,6 +189,68 @@ function appendWeather(data) {
     weatherPic = $('#weather-pic')
     
     
-   
-    
+}
+
+function getLocationFacts(city) {
+    //converts the destination to lowercase letters which is needed for the API URL
+    cityLowercase = city.toLowerCase()
+    var APIUrl= 'https://api.teleport.org/api/urban_areas/slug:'+ cityLowercase + "/scores/"
+    console.log('getLocationFacts URL ✔️', APIUrl);
+
+    //fetches the location facts api url
+    fetch(APIUrl)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            //logs the location facts url data
+            console.log('location facts URL DATA: ✔️', data);
+        
+        //add city name to population facts section so user knows which city is being displayed
+        $('#city-name').text(city)
+
+        //get cost of living ranking and add text to the html page
+        var costofLiving = data.categories[1]["score_out_of_10"];
+        console.log("location facts DATA Cost of Living", costofLiving);     
+        $('#cost-of-living').text("Cost of Living: " + costofLiving + " out of 10");
+        
+        //get commute ranking and add text to the html page
+        var commute = data.categories[5]["score_out_of_10"];
+        console.log("location facts DATA Commute", commute);   
+        $('#commute').text("Commute: " + commute + " out of 10");
+        
+        //get safety ranking and add text to the html page
+        var safety = data.categories[7]["score_out_of_10"];
+        console.log("location facts DATA Safety", safety); 
+        $('#safety').text("Safety: " + safety + " out of 10");
+
+        //get outoors ranking and add text to the html page
+        var outdoors = data.categories[16]["score_out_of_10"];
+        console.log("location facts DATA Outdoors", outdoors); 
+        $('#outdoors').text("Outdoors: " + outdoors + " out of 10");
+
+        })
+
+}
+
+function getCityPhotos(city) {
+     //converts the destination to lowercase letters which is needed for the API URL
+     cityLowercase = city.toLowerCase()
+     var APIUrl= 'https://api.teleport.org/api/urban_areas/slug:'+ cityLowercase + "/images/"
+     console.log('getCityPhotos URL ✔️', APIUrl);
+ 
+     //fetches the location facts api url
+     fetch(APIUrl)
+         .then(function(response) {
+             return response.json();
+         })
+         .then(function(data) {
+             //logs the location facts url data
+             console.log('City Photos URL DATA: ✔️', data);
+        
+        //gets city image from API and adds to the html page
+        var cityimage = data.photos[0].image.mobile;
+        console.log("getCityPhotos DATA image", cityimage);
+        $('#city-image').attr("src", cityimage);
+        })
 }
