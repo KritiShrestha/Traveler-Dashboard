@@ -1,33 +1,63 @@
+var city= "Atlanta"
+var cityHist = []
 
 //Initializes jQuery & waits for DOM elements to load
 $(function() {
     console.log("Page & jQuery initialized ✔️")
 
+    getInitialCity();
+
+    clickListener();
+
+	
+
+    // need to add loadCities()
+    
+})
+
+function clickListener() {
     //references dest-button id from html
     var destBtn = $('.dest-btn')
 
     //adds event listener for destination button click
-    destBtn.click(function(event) {
+    destBtn.click(function (event) {
         console.log('button click event listener works ✔️')
         event.preventDefault()
 
         //creating var that specifies the text where the click event occurred
-        var destClicked = $(event.target).text();
+        var city = $(event.target).text();
         console.log('event.target ✔️', $(event.target).text())
 
-        //calls getGeocode function & passes the destClicked var
-        getGeocode(destClicked)
+        //calls getGeocode function & passes the city var
+        getGeocode(city)
 
-        //calls getLocationFacts using Teleport API and passed destClick var
-        getLocationFacts(destClicked)
-
+        //calls getLocationFacts using Teleport API and passed city var
+        getLocationFacts(city)
     });
-    
-})
+}
 
-function getGeocode(destClicked) {
+//gets initial city to display upon page load
+function getInitialCity() {
+
+    localStorage.setItem('city', JSON.stringify(city));
+
+    var cityHistStore = JSON.parse(localStorage.getItem('city'));
+    console.log('cityhiststore: ', cityHistStore)
+
+    // if (cityHistStore !== null) {
+	// 	cityHist = cityHistStore
+	// }
+
+    //calls getGeocode function & passes the city var
+    getGeocode(city);
+
+    //calls getLocationFacts using Teleport API and passed city var
+    getLocationFacts(city)
+}
+
+function getGeocode(city) {
     //created a new var which strings together the base Teleport api url & the var destClicked var
-    var geocodeUrl= 'https://api.teleport.org/api/cities/?search=' + destClicked;
+    var geocodeUrl= 'https://api.teleport.org/api/cities/?search=' + city;
     //logs the whole url
     console.log('geocode url ✔️', geocodeUrl)
 
@@ -51,7 +81,7 @@ function getGeocode(destClicked) {
             console.log('geoname ID ✔️', geonameID)
 
             //calls the getCoordinates function & passes the geonameID var
-            getCoordinates(geonameID)
+            getCoordinates(geonameID);
         })
 }
 
@@ -77,12 +107,6 @@ function getCoordinates(geonameID) {
         var lon= data.location.latlon.longitude;
         console.log('Longitude: ✔️', lon);
 
-        //creates a new var which holds they city's population data and adds text to html page
-        var population = data.population;
-        console.log('Population: ✔️', population);
-        $('#population').text("Population: " + population);
-
-
         //calls the getWeatherApi function
         getWeatherApi(lat, lon)
         })
@@ -105,7 +129,6 @@ function getWeatherApi (lat, lon) {
 
             //calls appenWeather function & passes data
             appendWeather(data);
-            // getMapApi(lat, lon);
         })
 }
 
@@ -145,7 +168,8 @@ function appendWeather(data) {
 
     // weather img
     weatherPic = $('#weather-pic')
-      
+    
+    
 }
 
 function getLocationFacts(destClicked) {
