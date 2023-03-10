@@ -133,6 +133,10 @@ function getCoordinates(geonameID) {
         var lon= data.location.latlon.longitude;
         console.log('Longitude: ✔️', lon);
 
+        //creates a new var which contains the city population information and pushes it to the html page
+        var population = data.population;
+        $('#population').text("Population: " + population);
+
         //calls the getWeatherApi function and passes the lat/lon vars
         getWeatherApi(lat, lon)
         })
@@ -283,22 +287,22 @@ function getLocationFacts(city) {
         //get cost of living ranking and add text to the html page
         var costofLiving = data.categories[1]["score_out_of_10"];
         console.log("location facts DATA Cost of Living", costofLiving);     
-        $('#cost-of-living').text("Cost of Living: " + costofLiving + " out of 10");
+        $('#cost-of-living').text("Cost of Living: " + costofLiving.toFixed(2) + " out of 10");
         
         //get commute ranking and add text to the html page
         var commute = data.categories[5]["score_out_of_10"];
         console.log("location facts DATA Commute", commute);   
-        $('#commute').text("Commute: " + commute + " out of 10");
+        $('#commute').text("Commute: " + commute.toFixed(2) + " out of 10");
         
         //get safety ranking and add text to the html page
         var safety = data.categories[7]["score_out_of_10"];
         console.log("location facts DATA Safety", safety); 
-        $('#safety').text("Safety: " + safety + " out of 10");
+        $('#safety').text("Safety: " + safety.toFixed(2) + " out of 10");
 
         //get outoors ranking and add text to the html page
         var outdoors = data.categories[16]["score_out_of_10"];
         console.log("location facts DATA Outdoors", outdoors); 
-        $('#outdoors').text("Outdoors: " + outdoors + " out of 10");
+        $('#outdoors').text("Outdoors: " + outdoors.toFixed(2) + " out of 10");
 
         })
 }
