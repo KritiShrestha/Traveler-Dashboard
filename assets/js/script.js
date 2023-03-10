@@ -209,32 +209,20 @@ function displayForecast(data) {
     
     fiveForecastEl.empty();
     
-    var fiveDayArray = data.hourly;
 		var forecast = data.hourly;
-		//Made a object that would allow for easier data read
-		// $.each(fiveDayArray, function (index, value) {
-		// 	testObj = {
-		// 	    humidityRel: data.hourly.relativehumidity_2m,
-		// 		temp_2m: data.hourly.temperature_2m,
-		// 		time: data.hourly.time,
-        //         wind_10m: data.hourly.windspeed_10m
-		// 	}
-
-        //     forecast.push(testObj)
-			
-		// })
 
         console.log(forecast)
-	     //Inject the cards to the screen 
+
+	    //Append cards for each forecast day to the screen 
 		for (let i = 0; i < 5; i++) {
 
 		 	var divElCard = $('<div>');
-			divElCard.attr('class', 'card text-white bg-primary mb-3 cardOne');
-		 	divElCard.attr('style', 'max-width: 215px;');
+			divElCard.attr('class', 'column card');
+		 	// divElCard.attr('style', '');
 		 	fiveForecastEl.append(divElCard);
 
-		 	var divElHeader = $('<div>');
-		 	divElHeader.attr('class', 'card-header')
+		 	// var divElHeader = $('<div>');
+		 	// divElHeader.attr('class', 'card-header')
 		 	// var dayFormat = dayjs(`${forecast[i].date}`).format('MM-DD-YYYY');
 		 	// divElHeader.text(dayFormat);
 		 	// divElCard.append(divElHeader)
@@ -243,16 +231,18 @@ function displayForecast(data) {
 		 	divElBody.attr('class', 'card-body');
 		 	divElCard.append(divElBody);
 
-		 	var divElIcon = $('<img>');
-		 	divElIcon.attr('class', 'icons');
-		 	// divElIcon.attr('src', `https://openweathermap.org/img/wn/${forecast[i].icon}@2x.png`);
-		 	divElBody.append(divElIcon);
+		 	// var divElIcon = $('<img>');
+		 	// divElIcon.attr('class', 'icons');
+		 	// // divElIcon.attr('src', `https://openweathermap.org/img/wn/${forecast[i].icon}@2x.png`);
+		 	// divElBody.append(divElIcon);
+
+             console.log("forecast", forecast[i]);
 
 		 	//Temp
-            console.log("forecast", forecast[i]);
 		 	var pElTemp = $('<p>').text('Temperature: ' + forecast.temperature_2m[i] + ' °F');
 		 	divElBody.append(pElTemp);
             console.log("pELTemp", pElTemp)
+
 		 	//Humidity
 		 	var pElHumid = $('<p>').text('Humidity: ' + forecast.relativehumidity_2m[i] + ' %');
 		 	divElBody.append(pElHumid);
