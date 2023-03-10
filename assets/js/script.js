@@ -210,21 +210,20 @@ function displayForecast(data) {
     fiveForecastEl.empty();
     
     var fiveDayArray = data.hourly;
-		var forecast = [];
+		var forecast = data.hourly;
 		//Made a object that would allow for easier data read
-		$.each(fiveDayArray, function (index, value) {
-			testObj = {
-			    humidityRel: data.hourly.relativehumidity_2m,
-				temp_2m: data.hourly.temperature_2m,
-				time: data.hourly.time,
-                wind_10m: data.hourly.windspeed_10m
-			}
+		// $.each(fiveDayArray, function (index, value) {
+		// 	testObj = {
+		// 	    humidityRel: data.hourly.relativehumidity_2m,
+		// 		temp_2m: data.hourly.temperature_2m,
+		// 		time: data.hourly.time,
+        //         wind_10m: data.hourly.windspeed_10m
+		// 	}
 
-            forecast.push(testObj)
+        //     forecast.push(testObj)
 			
-		})
+		// })
 
-        console.log(testObj)
         console.log(forecast)
 	     //Inject the cards to the screen 
 		for (let i = 0; i < 5; i++) {
@@ -250,19 +249,21 @@ function displayForecast(data) {
 		 	divElBody.append(divElIcon);
 
 		 	//Temp
-		 	var pElTemp = $('<p>').text('Temperature: ' + forecast[i].temp_2m.slice(0,5)[i] + ' °F');
+            console.log("forecast", forecast[i]);
+		 	var pElTemp = $('<p>').text('Temperature: ' + forecast.temperature_2m[i] + ' °F');
 		 	divElBody.append(pElTemp);
-
+            console.log("pELTemp", pElTemp)
 		 	//Humidity
-		 	var pElHumid = $('<p>').text('Humidity: ' + forecast[i].humidityRel.slice(0,5)[i] + ' %');
+		 	var pElHumid = $('<p>').text('Humidity: ' + forecast.relativehumidity_2m[i] + ' %');
 		 	divElBody.append(pElHumid);
+            console.log("pElHumid", pElHumid)
 
              //Wind
-             var pwindEl = $('<p>').text('Wind: ' +  forecast[i].wind_10m.slice(0,5)[i] + ' MPH');
+             var pwindEl = $('<p>').text('Wind: ' +  forecast.windspeed_10m[i] + ' MPH');
              divElBody.append(pwindEl);
 
              //Time
-             var ptimeEl = $('<p>').text('Time: ' + forecast[i].time.slice(0,5)[i])
+             var ptimeEl = $('<p>').text('Time: ' + forecast.time[i])
              divElBody.append(ptimeEl);
         }
 }
