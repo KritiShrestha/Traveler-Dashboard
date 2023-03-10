@@ -7,6 +7,7 @@ $(function() {
 
     //calls the clickListener function
     clickListener();
+
 })
 
 //gets initial city to display upon page load
@@ -32,6 +33,8 @@ function getInitialCity() {
         //calls getCityPhotos function using Teleport API and passes city var
         getCityPhotos(city);
 
+        getModal(city);
+
         //if local storage is not null, then the city var is set to the city already stored
     } else if (cityStored !== null) {
         city = cityStored;
@@ -44,6 +47,8 @@ function getInitialCity() {
 
         //calls getCityPhotos function using Teleport API and passes city var
         getCityPhotos(city);
+
+        getModal(city);
     }
 }
 
@@ -71,6 +76,8 @@ function clickListener() {
         
         //calls getCityPhotos function using Teleport API and passes city var
         getCityPhotos(city)
+
+        getModal(city);
     });
 }
 
@@ -316,4 +323,59 @@ function getCityPhotos(city) {
         console.log("getCityPhotos DATA image", cityimage);
         $('#city-image').attr("src", cityimage);
         })
+}
+
+//functions displays the correct map when Modal button is clicked
+function getModal(city) {
+    console.log("TESTING", city)
+
+    //creates var that references the class ID city-map in html
+    var cityMap = $('.city-map')
+    
+    //If/else statement loops through to select correct image that corresponds with city var
+    if (city === "Atlanta") {
+        cityMap.attr("src", "./assets/images/Atlanta.PNG")
+    } else  if (city === "Miami") {
+        cityMap.attr("src", "./assets/images/Miami.PNG")
+    } else  if (city === "Dallas") {
+        cityMap.attr("src", "./assets/images/Dallas.PNG")
+    } else  if (city === "Raleigh") {
+        cityMap.attr("src", "./assets/images/Raleigh.PNG")
+    } else if (city === "Denver") {
+        cityMap.attr("src", "./assets/images/Denver.PNG")
+    } 
+
+    // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
 }

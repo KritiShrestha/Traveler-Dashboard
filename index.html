@@ -35,9 +35,14 @@
         <div class="detail-container column is-two-thirds">
             <div class="content is-normal" id="map-container">
                 <h4 class="has-text-centered">Map</h4>
-                <div class="title is-4 image is-128x128"></div>
+                <!-- <div class="title is-4 image is-128x128"></div> -->
+                <button class="button is-primary js-modal-trigger" data-target="modal-js-example">
+                    Click here to see Map of City!
+                </button>
 
                 <img id="city-image" class="resize">
+
+                
             </div>
     
             <div class="content is-normal" id="things-to-do-container">
@@ -66,11 +71,28 @@
                 <div class="row" id="fiveDayForecast"></div>
             </section>
     
+            <div id="modal-js-example" class="modal">
+                <div class="modal-background"></div>
+              
+                <div class="modal-content">
+                    <p class="image is-4by3">
+                    <img class="city-map" src="" alt="">
+                    </p>
+                </div>
+              
+                <button class="modal-close is-large" aria-label="close"></button>
+              </div>
+
+
             <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
             <script src="https://code.jquery.com/jquery-3.6.3.min.js"
                 integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+            
             <script src="./assets/js/script.js"></script>
+            <script src="./assets/js/modal.js"></script>
     </main>
+
+    
 </body>
 
 </html>
