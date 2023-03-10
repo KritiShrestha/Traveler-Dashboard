@@ -13,13 +13,13 @@
 </head>
 
 <body>
-    <h1 class="title  has-text-centered mr-0 pt-3 heading-1 ">Traveler Forecast Checker</h1>
+    <h1 class="title has-text-centered mr-0 pt-3 heading-1 ">Traveler Forecast Checker</h1>
 
-    <main>
+    <div class="columns">
     
-        <div class="content is-pulled-left is-one-third destination-container">
+        <div class="column is-one-fifth">
             <div class="title">Destinations</div>
-            <div class="buttons is-flex-direction-column mb-4 is-pulled-left">
+            <div class="buttons is-flex-direction-column">
     
                 <button class="button is-link dest-btn">Atlanta</button>
                 <button class="button is-link dest-btn">Miami</button>
@@ -30,69 +30,74 @@
             </div>
         </div>
     
+        <div class="column is-four-fifths">
+            <div class="columns">
+                <div class="column is-half content is-normal" id="map-container">
+                    <h2 class="has-text-centered" id="city-name">Map</h2>
+                    <!-- <div class="title is-4 image is-128x128"></div> -->
     
+                    <img id="city-image" class="resize">
     
-        <div class="detail-container column is-two-thirds">
-            <div class="content is-normal" id="map-container">
-                <h4 class="has-text-centered">Map</h4>
-                <!-- <div class="title is-4 image is-128x128"></div> -->
-                <button class="button is-primary js-modal-trigger" data-target="modal-js-example">
-                    Click here to see Map of City!
-                </button>
+                    <button class="button is-link is-medium js-modal-trigger" data-target="modal-js-example">
+                        Click here to see Map of City!
+                    </button>
+    
+                </div>
+    
+                <div class="column is-half content is-normal" id="things-to-do-container">
+    
+                    <h2> City Info</h2>
+    
+                    <ul>
+                        <li id="population"></li>
+                        <li id="cost-of-living"></li>
+                        <li id="commute"></li>
+                        <li id="safety"></li>
+                        <li id="outdoors"></li>
+                    </ul>
+    
+                    <div class="content" id="weather-container">
+                        <h2 id="weather-forecast">Weather Forecast</h2>
+                        <p id="temp"></p>
+                        <p id="wind-speed"></p>
+                        <p id="wind-direction"></p>
+                        <i id="weather-pic"></i>
+                    </div>
+    
+                </div>
 
-                <img id="city-image" class="resize">
-
+            </div>
                 
-            </div>
+                <div class="column is-full">
+                    <h2 class="title">Hourly Forecast</h2>
+                    <div class="columns" id="fiveDayForecast">
+                        
+                    </div>
+                </div>
     
-            <div class="content is-normal" id="things-to-do-container">
-
-                <h2 id="city-name"> City Info</h2>
+           
     
-                <ul>
-                    <li id="population">999999</li>
-                    <li id="cost-of-living">1000</li>
-                    <li id="commute">asdasd asd asd</li>
-                    <li id="safety">asdasd</li>
-                    <li id="outdoors">asdasda</li>
-                </ul>
-            </div>
-    
-            <div class="content is-small" id="weather-container">
-                <h2 id="weather-forecast">Weather Forecast</h2>
-                <p id="temp"></p>
-                <p id="wind-speed"></p>
-                <p id="wind-direction"></p>
-                <i id="weather-pic"></i>
-            </div>
-
-            <section class="row">
-                <h2>Hourly Forecast</h2>
-                <div class="row" id="fiveDayForecast"></div>
-            </section>
     
             <div id="modal-js-example" class="modal">
                 <div class="modal-background"></div>
-              
+    
                 <div class="modal-content">
                     <p class="image is-4by3">
-                    <img class="city-map" src="" alt="">
+                        <img class="city-map" src="" alt="">
                     </p>
                 </div>
-              
-                <button class="modal-close is-large" aria-label="close"></button>
-              </div>
-
-
-            <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
-            <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-                integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-            
-            <script src="./assets/js/script.js"></script>
-            <script src="./assets/js/modal.js"></script>
-    </main>
-
+            </div>
     
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+
+        <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+        <script src="./assets/js/script.js"></script>
+        <script src="./assets/js/modal.js"></script>
 </body>
 
 </html>
