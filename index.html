@@ -4,10 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <title>Traveler Info</title>
@@ -17,88 +15,130 @@
     <h1 class="title has-text-centered mr-0 pt-3 heading-1 ">Traveler Forecast Checker</h1>
 
     <div class="columns">
-    
-        <div class="column is-one-fifth">
-            <div class="title">Destinations</div>
-            <div class="buttons is-flex-direction-column">
-    
-                <button class="button is-link dest-btn">Atlanta</button>
-                <button class="button is-link dest-btn">Miami</button>
-                <button class="button is-link dest-btn">Dallas</button>
-                <button class="button is-link dest-btn">Raleigh</button>
-                <button class="button is-link dest-btn">Denver</button>
-    
+        <div class="column is-one-fourth ">
+            <div class="columns">
+                <div class="column content is-normal is-size-7-mobile is-size-6-tablet is-size-5-desktop"
+                    id="destination-container">
+                    <div class="card is-fullwidth is-variable is-5">
+                        <header class="card-header">
+                            <p class="card-header-title">Destinations</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <div class="buttons is-flex-direction-column">
+                                    <button
+                                        class="button is-link dest-btn is-small-mobile is-medium-tablet is-large-desktop is-fullwidth">Atlanta</button>
+                                    <button
+                                        class="button is-link dest-btn is-small-mobile is-medium-tablet is-large-desktop is-fullwidth">Miami</button>
+                                    <button
+                                        class="button is-link dest-btn is-small-mobile is-medium-tablet is-large-desktop is-fullwidth">Dallas</button>
+                                    <button
+                                        class="button is-link dest-btn is-small-mobile is-medium-tablet is-large-desktop is-fullwidth">Raleigh</button>
+                                    <button
+                                        class="button is-link dest-btn is-small-mobile is-medium-tablet is-large-desktop is-fullwidth">Denver</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    
+
         <div class="column is-four-fifths">
             <div class="columns">
-                <div class="column is-half content is-normal" id="map-container">
-                    <h2 class="has-text-centered" id="city-name">Map</h2>
-                    <!-- <div class="title is-4 image is-128x128"></div> -->
-    
-                    <img id="city-image" class="resize">
-    
-                    <button class="button is-link is-medium js-modal-trigger" data-target="modal-js-example">
-                        Click here to see Map of City!
-                    </button>
-    
-                </div>
-    
-                <div class="column is-half content is-normal" id="things-to-do-container">
-    
-                    <h2> City Info</h2>
-    
-                    <ul>
-                        <li id="population"></li>
-                        <li id="cost-of-living"></li>
-                        <li id="commute"></li>
-                        <li id="safety"></li>
-                        <li id="outdoors"></li>
-                    </ul>
-    
-                    <div class="content" id="weather-container">
-                        <h2 id="weather-forecast">Weather Forecast</h2>
-                        <p><i id="weather-icon"></i></p>
-                        <p id="temp"></p>
-                        <p id="wind-speed"></p>
-                        <p id="wind-direction"></p>
-                       
+                <div class="column is-half content is-normal is-size-7-mobile is-size-6-tablet is-size-5-desktop"
+                    id="map-container">
+                    <div class="card is-fullwidth is-variable is-5">
+                        <header class="card-header">
+                            <p class="card-header-title">Map Container</p>
+                        </header>
+                        <div class="card-content has-text-centered">
+                            <div class="content">
+                                <h2 class="has-text-centered" id="city-name card card-header-title">City</h2>
+
+                                <figure class="is-align-items-center image is-16by9" id="img-container">
+                                    <img id="city-image">
+                                </figure>
+
+                                <button class="button is-link is-medium js-modal-trigger is-small-mobile is-medium-tablet is-large-desktop is-halfwidth is-size-6
+                                    is-half-mobile is-half-tablet is-half-desktop" data-target="modal-js-example">
+                                    Click here to see Map of City!
+                                </button>
+                            </div>
+                        </div>
                     </div>
-    
+                </div>
+
+
+                <div class="column is-half content is-normal is-size-7-mobile is-size-6-tablet is-size-5-desktop "
+                    id="things-to-do-container">
+                    <div class="card is-fullwidth is-variable is-5">
+                        <header class="card-header">
+                            <p class="card-header-title">City Info</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <ul>
+                                    <li id="population"></li>
+                                    <li id="cost-of-living"></li>
+                                    <li id="commute"></li>
+                                    <li id="safety"></li>
+                                    <li id="outdoors"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card is-fullwidth is-variable is-5">
+                        <header class="card-header">
+                            <p class="card-header-title">Weather Forecast</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p id="temp"></p>
+                                <p id="wind-speed"></p>
+                                <p id="wind-direction"></p>
+                                <i id="weather-pic"></i>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
-                
-                <div class="column is-full">
-                    <h2 class="title">Hourly Forecast</h2>
-                    <div class="columns" id="fiveDayForecast">
-                        
+
+
+            <div class="column is-full content is-normal is-size-7-mobile is-size-7-tablet is-size-6-desktop"
+                id="hourly-forecast-container">
+                <div class="card is-fullwidth is-variable is-5">
+                    <header class="card-header">
+                        <p class="card-header-title is-size-4-mobile">Hourly Forecast</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="columns" id="fiveDayForecast">
+                        </div>
                     </div>
                 </div>
-    
-           
-    
-    
+
+            </div>
+
             <div id="modal-js-example" class="modal">
                 <div class="modal-background"></div>
-    
+
                 <div class="modal-content">
                     <p class="image is-4by3">
                         <img class="city-map" src="" alt="">
                     </p>
                 </div>
             </div>
-    
-            <button class="modal-close is-large" aria-label="close"></button>
-        </div>
 
+            <button class="modal-close is-large" aria-label="close"></button>
 
         
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/0f7f7aa2bf.js" crossorigin="anonymous"></script>
         <script src="./assets/js/script.js"></script>
+
 </body>
 
 </html>
