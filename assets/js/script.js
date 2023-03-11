@@ -35,6 +35,9 @@ function getInitialCity() {
 
         getModal(city);
 
+        //add city name html so user knows which city is being displayed
+        $('#city-name').text(city)
+
         //if local storage is not null, then the city var is set to the city already stored
     } else if (cityStored !== null) {
         city = cityStored;
@@ -49,6 +52,9 @@ function getInitialCity() {
         getCityPhotos(city);
 
         getModal(city);
+
+        //add city name html so user knows which city is being displayed
+        $('#city-name').text(city)
     }
 }
 
@@ -78,6 +84,9 @@ function clickListener() {
         getCityPhotos(city)
 
         getModal(city);
+
+        //add city name html so user knows which city is being displayed
+        $('#city-name').text(city)
     });
 }
 
@@ -291,9 +300,6 @@ function getLocationFacts(city) {
         .then(function(data) {
             //logs the location facts url data
             console.log('location facts URL DATA: ✔️', data);
-        
-        //add city name to population facts section so user knows which city is being displayed
-        $('#city-name').text(city)
 
         //get cost of living ranking and add text to the html page
         var costofLiving = data.categories[1]["score_out_of_10"];
