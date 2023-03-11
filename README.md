@@ -1,12 +1,12 @@
 # Traveler Dashboard
 
 ## Description 
-For this project, we built an application using JavaScript and Bulma that displays city information along with forecast data. We used the Open-Meteo API to display the current weather data for a city along with a 5-hour forecast. We used the Teleport API to pull the city population, city rankings, and city images. There is also an image modal that displays a map for each city. In addition, the selected city is saved in local storage so that the information displays after page reloads.
+For this project, we built an application using JavaScript and Bulma that displays city information along with forecast data. We used the Open-Meteo API to display the current weather data for a city along with a 5-hour forecast. We used the Teleport API to pull the city population, city rankings, and city images. There is also an image modal that displays a map for each city. In addition, the selected city is saved in local storage so that the information displays after the page reloads.
 
 The webpage can be found here: 
 
 ## API Documentation
-https://open-meteo.com/en/docs
+https://open-meteo.com/en/docs</br>
 https://developers.teleport.org/api/getting_started/
 
 ## Usage
@@ -23,16 +23,17 @@ SO THAT I can plan which city to visit
 ## Acceptance Criteria 
 
 ```
-GIVEN a traveler dashboard weather and city rankings
+GIVEN a traveler dashboard with weather data and city rankings
 WHEN I select a destination
 THEN I am presented with city information and weather data and that city name is added to local storage
 WHEN I view current weather conditions for that city
-THEN I am presented with the an icon of the weather conditions, the temperature, wind speed, and wind direction
+THEN I am presented with an icon of the weather conditions, the temperature, wind speed, and wind direction
 WHEN I view hourly forecast for that city
-THEN I am presented with a 5-hour forecast that displays the temperature, humidity, wind speed, and data and time
+THEN I am presented with a 5-hour forecast that displays the temperature, humidity, wind speed, and date and time
 WHEN I view the city information
-WHEN I presented with population data along with rankings for cost of living, commute, safety, and outdoors
-THEN I am again presented with a pop up modal of the city map
+THEN I presented with population data along with rankings for cost of living, commute, safety, and outdoors
+WHEN  I click the map of t he city
+THEN I am presented with a pop up modal of the city map
 ```
 
 ## Mock-Up
