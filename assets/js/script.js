@@ -171,7 +171,6 @@ function getWeatherApi (lat, lon) {
 }
 
 function appendWeather(data) {
-    // var weather = $('.weather-forecast');
 
     // ID Variables 
     var weatherIcon = $('#weather-icon')
@@ -180,8 +179,8 @@ function appendWeather(data) {
     var wind_direct = $('#wind-direction')
 
     //Weather Values
-    temp.text(data.current_weather.temperature + " F");
-    wind_speed.text(data.current_weather.windspeed + " mph")
+    temp.text('Temp: ' + data.current_weather.temperature + " F");
+    wind_speed.text('Wind: ' + data.current_weather.windspeed + " mph")
     
     var wind_spot = data.current_weather.winddirection
     console.log(wind_spot)
@@ -243,32 +242,24 @@ function displayForecast(data) {
         console.log(forecast)
 
 	    //Append cards for each forecast day to the screen 
-		for (let i = 0; i < 5; i++) {
+		for (let i = 12; i < 109; i+= 24) {
 
 		 	var divElCard = $('<div>');
 			divElCard.attr('class', 'column card');
-		 	// divElCard.attr('style', '');
 		 	fiveForecastEl.append(divElCard);
-
-		 	// var divElHeader = $('<div>');
-		 	// divElHeader.attr('class', 'card-header')
-		 	// var dayFormat = dayjs(`${forecast[i].date}`).format('MM-DD-YYYY');
-		 	// divElHeader.text(dayFormat);
-		 	// divElCard.append(divElHeader)
 
 		 	var divElBody = $('<div>');
 		 	divElBody.attr('class', 'card-body');
 		 	divElCard.append(divElBody);
 
-		 	// var divElIcon = $('<img>');
-		 	// divElIcon.attr('class', 'icons');
-		 	// // divElIcon.attr('src', `https://openweathermap.org/img/wn/${forecast[i].icon}@2x.png`);
-		 	// divElBody.append(divElIcon);
-
              console.log("forecast", forecast[i]);
 
+            //Time
+            var ptimeEl = $('<p>').text(dayjs(`${forecast.time[i]}`).format('M/DD/YY'))
+            divElBody.append(ptimeEl);
+
 		 	//Temp
-		 	var pElTemp = $('<p>').text('Temperature: ' + forecast.temperature_2m[i] + ' °F');
+		 	var pElTemp = $('<p>').text('Temp: ' + forecast.temperature_2m[i] + ' °F');
 		 	divElBody.append(pElTemp);
             console.log("pELTemp", pElTemp)
 
@@ -277,13 +268,10 @@ function displayForecast(data) {
 		 	divElBody.append(pElHumid);
             console.log("pElHumid", pElHumid)
 
-             //Wind
-             var pwindEl = $('<p>').text('Wind: ' +  forecast.windspeed_10m[i] + ' MPH');
-             divElBody.append(pwindEl);
+            //Wind
+            var pwindEl = $('<p>').text('Wind: ' +  forecast.windspeed_10m[i] + ' MPH');
+            divElBody.append(pwindEl);
 
-             //Time
-             var ptimeEl = $('<p>').text('Time: ' + forecast.time[i])
-             divElBody.append(ptimeEl);
         }
 }
 function getLocationFacts(city) {
