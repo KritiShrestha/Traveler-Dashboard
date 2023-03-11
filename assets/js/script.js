@@ -162,9 +162,10 @@ function getWeatherApi (lat, lon) {
 }
 
 function appendWeather(data) {
-    var weather = $('.weather-forecast');
+    // var weather = $('.weather-forecast');
 
     // ID Variables 
+    var weatherIcon = $('#weather-icon')
     var temp = $('#temp');
     var wind_speed = $('#wind-speed')
     var wind_direct = $('#wind-direction')
@@ -195,9 +196,28 @@ function appendWeather(data) {
         wind_direct.text('Wind Direction: W')
     }   
 
-    // weather img
-    weatherPic = $('#weather-pic')
-    
+    // weather icon
+    var weatherCode = data.current_weather.weathercode
+    console.log("WEATHERCODE", weatherCode)
+
+    //sets specific icon based on weather code
+    if (weatherCode === 0) {
+        weatherIcon.attr('class', 'fa-solid fa-sun fa-2xl')
+    } else if (weatherCode === 1 || weatherCode === 2 || weatherCode === 3) {
+        weatherIcon.attr('class', 'fa-solid fa-cloud-sun fa-2xl')
+    } else if (weatherCode === 45 || weatherCode === 48) {
+        weatherIcon.attr('class', 'fa-solid fa-smog fa-2xl') 
+    } else if (weatherCode === 51 || weatherCode === 53 || weatherCode === 55) {
+        weatherIcon.attr('class', 'fa-solid fa-cloud fa-2xl') 
+    } else if (weatherCode === 56 || weatherCode === 57 || weatherCode === 61 || weatherCode === 63 || weatherCode === 65 || weatherCode === 66 || weatherCode === 67) {
+        weatherIcon.attr('class', 'fa-solid fa-cloud-rain fa-2xl') 
+    } else if (weatherCode === 71 || weatherCode === 73 || weatherCode === 75 || weatherCode === 77 || weatherCode === 85 || weatherCode === 86) {
+        weatherIcon.attr('class', 'fa-solid fa-snowflake fa-2xl') 
+    } else if (weatherCode === 80 || weatherCode === 81 || weatherCode === 82) {
+        weatherIcon.attr('class', 'fa-solid fa-cloud-showers-heavy fa-2xl') 
+    } else if (weatherCode === 95 || weatherCode === 96 || weatherCode === 99) {
+        weatherIcon.attr('class', 'fa-solid fa-cloud-bolt fa-2xl') 
+    }
 
     displayForecast(data)
   
