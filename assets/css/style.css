@@ -2,42 +2,41 @@ body {
     background: #d4dee7;
 }
 
- .button.is-link.is-medium.js-modal-trigger{
-  
-    font-family: 'Shantell Sans', cursive;
-    font-weight: bolder;
-   
-}
-
 .card-content {
     background: #e4effb;
 }
 
-ul,.content {
+ul,
+.content {
     font-family: 'PT Serif', serif;
     font-family: 'Shantell Sans',
 }
 
 .title.has-text-centered.mr-0.pt-3.heading-1 {
     color: white;
-   background-image: radial-gradient( circle 674px at 18.3% 77%,  rgba(139,186,244,1) 3.4%, rgba(15,51,92,1) 56.6% );
+    background-image: radial-gradient(circle 674px at 18.3% 77%, rgba(139, 186, 244, 1) 3.4%, rgba(15, 51, 92, 1) 56.6%);
     padding: 13px;
     font-size: 30px;
 
 }
+
+.button.is-link.is-medium.js-modal-trigger {
+    font-family: 'Shantell Sans', cursive;
+    font-weight: bolder;
+}
+
 .button.is-primary:hover {
     background-color: #f9f5f5;
     color: #044045;
-
 }
 
-                                    
 .buttons {
     gap: 40px;
-
+    min-width: 50px;
 }
-.button{
-    background-image: linear-gradient( 114.3deg, rgb(69 109 162 / 89%) 22%, rgba(13,104,175,0.76) 78.3% );
+
+.button {
+    background-image: linear-gradient(114.3deg, rgb(69 109 162 / 89%) 22%, rgba(13, 104, 175, 0.76) 78.3%);
     border-radius: 15px;
 }
 
@@ -45,32 +44,35 @@ ul,.content {
     width: 65%;
 }
 
+.button.is-link.dest-btn {
+    font-size: 15px;
+    font-weight: bold;
+}
+
 #hourly-forecast-container {
     margin-top: -50px;
 
 }
-.card-header{
+
+.card-header {
     font-size: 24px;
 }
-.card-header-title, .card-header{
 
+.card-header-title,
+.card-header {
     font-family: 'Shantell Sans', 'cursive';
     height: 40px;
-    background-image: linear-gradient( 114.3deg, rgb(69 109 162 / 89%) 22%, rgba(13,104,175,0.76) 78.3% );
+    background-image: linear-gradient(114.3deg, rgb(69 109 162 / 89%) 22%, rgba(13, 104, 175, 0.76) 78.3%);
     color: white;
 }
 
-.column.card{
-    background-image: linear-gradient( 106.3deg, rgb(46 80 126 / 89%) 22%, rgb(47 87 161 / 76%) 78.3% );
+.column.card {
+    background-image: linear-gradient(106.3deg, rgb(46 80 126 / 89%) 22%, rgb(47 87 161 / 76%) 78.3%);
     color: white;
     padding: 12px;
     border-radius: 15px;
 }
 
-.button.is-link.dest-btn {
-    font-size: 20px;
-    font-weight: bold;
-}
-#fiveDayForecast{
+#fiveDayForecast {
     gap: 40px;
 }

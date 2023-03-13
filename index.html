@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-   
+
 
     <title>Traveler Dashboard</title>
 </head>
@@ -15,8 +15,8 @@
 <body>
     <h1 class="title has-text-centered mr-0 pt-3 heading-1 ">Traveler Dashboard</h1>
 
-    <div class="columns">
-        <div class="column is-one-fourth ">
+    <div class="columns is-narrow is-mobile">
+        <div class="column is-one-fourth is-desktop is-tablet is-mobile">
             <div class="columns">
                 <div class="column content is-normal is-size-7-mobile is-size-6-tablet is-size-5-desktop"
                     id="destination-container">
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="column is-four-fifths">
+        <div class="column is-four-fifths is-desktop is-tablet is-mobile">
             <div class="columns">
                 <div class="column is-half content is-normal is-size-7-mobile is-size-6-tablet is-size-5-desktop"
                     id="map-container">
@@ -55,14 +55,16 @@
                         </header>
                         <div class="card-content has-text-centered">
                             <div class="content">
-                                <h2 class="has-text-centered" id="card card-header-title"><span id="city-name"></span></h2>
+                                <h2 class="has-text-centered" id="card card-header-title"><span id="city-name"></span>
+                                </h2>
 
                                 <figure class="is-align-items-center image is-16by9" id="img-container">
                                     <img id="city-image">
                                 </figure>
 
                                 <button class="button is-link is-medium js-modal-trigger is-small-mobile is-medium-tablet is-large-desktop is-halfwidth is-size-6
-                                    is-half-mobile is-half-tablet is-half-desktop button is-primary" data-target="modal-js-example">
+                                    is-half-mobile is-half-tablet is-half-desktop button is-primary"
+                                    data-target="modal-js-example">
                                     Click here to see Map of City!
                                 </button>
                             </div>
@@ -110,36 +112,42 @@
             </div>
 
 
-            <div class="column is-full content is-normal is-size-7-mobile is-size-7-tablet is-size-6-desktop"
-                id="hourly-forecast-container">
-                <div class="card is-fullwidth is-variable is-5">
-                    <header class="card-header">
-                        <p class="card-header-title is-size-4-mobile">5-Day Forecast</p>
-                    </header>
-                    <div class="card-content">
-                        <div class="columns gap-3 " id="fiveDayForecast">
+            <div class="columns">
+                <div class="column is-full content is-normal is-size-7-mobile is-size-7-tablet is-size-6-desktop"
+                    id="hourly-forecast-container">
+                    <div class="card is-fullwidth is-variable is-5">
+                        <header class="card-header">
+                            <p class="card-header-title is-size-4-mobile">5-Day Forecast</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="columns gap-3 " id="fiveDayForecast">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-
-            <div id="modal-js-example" class="modal">
-                <div class="modal-background"></div>
-
-                <div class="modal-content">
-                    <p class="image is-4by3">
-                        <img class="city-map" src="" alt="">
-                    </p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- <button class="modal-close is-large" aria-label="close"></button> -->
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
 
-        <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/0f7f7aa2bf.js" crossorigin="anonymous"></script>
-        <script src="./assets/js/script.js"></script>
+        <div class="modal-content">
+            <p class="image is-4by3">
+                <img class="city-map" src="" alt="">
+            </p>
+        </div>
+    </div>
+
+    <!-- <button class="modal-close is-large" aria-label="close"></button> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0f7f7aa2bf.js" crossorigin="anonymous"></script>
+    <script src="./assets/js/script.js"></script>
 
 </body>
 
