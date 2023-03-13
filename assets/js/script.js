@@ -20,7 +20,7 @@ function getInitialCity() {
     if (cityStored === null) {
         //sets default city to Atlanta if there is no city saved to local storage
         var city = "Atlanta";
-        console.log("default city: ", city);
+        //console.log("default city: ", city);
         //saves the var city to local storage
         localStorage.setItem('city', JSON.stringify(city));
 
@@ -187,7 +187,7 @@ function appendWeather(data) {
     wind_speed.text('Wind: ' + data.current_weather.windspeed + " mph")
     
     var wind_spot = data.current_weather.winddirection
-    console.log(wind_spot)
+    //console.log(wind_spot)
 
     // finding wind direction 
     if (wind_spot > 0 && wind_spot < 90) {
@@ -263,12 +263,12 @@ function displayForecast(data) {
 		 	//Temp
 		 	var pElTemp = $('<p>').text('Temp: ' + forecast.temperature_2m[i] + ' °F');
 		 	divElBody.append(pElTemp);
-            console.log("pELTemp", pElTemp)
+            //console.log("pELTemp", pElTemp)
 
 		 	//Humidity
 		 	var pElHumid = $('<p>').text('Humidity: ' + forecast.relativehumidity_2m[i] + ' %');
 		 	divElBody.append(pElHumid);
-            console.log("pElHumid", pElHumid)
+            //console.log("pElHumid", pElHumid)
 
             //Wind
             var pwindEl = $('<p>').text('Wind: ' +  forecast.windspeed_10m[i] + ' MPH');
