@@ -53,6 +53,8 @@ ul,.content {
     font-size: 24px;
 }
 .card-header-title, .card-header{
+
+    font-family: 'Shantell Sans', 'cursive';
     height: 40px;
     background-image: linear-gradient( 114.3deg, rgb(69 109 162 / 89%) 22%, rgba(13,104,175,0.76) 78.3% );
     color: white;
@@ -61,9 +63,14 @@ ul,.content {
 .column.card{
     background-image: linear-gradient( 106.3deg, rgb(46 80 126 / 89%) 22%, rgb(47 87 161 / 76%) 78.3% );
     color: white;
+    padding: 12px;
+    border-radius: 15px;
 }
 
 .button.is-link.dest-btn {
     font-size: 20px;
     font-weight: bold;
+}
+#fiveDayForecast{
+    gap: 40px;
 }
