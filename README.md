@@ -85,7 +85,7 @@ Cpalacios95 <br>
   <img src="https://contrib.rocks/image?repo=Carolinapalacios95/portfolio" />
 </a><br>
 KritiShrestha <br>
-<a href="https://github.com/KritiShrestha/bingo-class/graphs/contributors">
+<a href="https://github.com/KritiShrestha/">
   <img src="https://contrib.rocks/image?repo=KritiShrestha/bingo-class" />
 </a>
 
