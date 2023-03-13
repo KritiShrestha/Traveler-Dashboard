@@ -85,8 +85,9 @@ Cpalacios95 <br>
   <img src="https://contrib.rocks/image?repo=Carolinapalacios95/portfolio" />
 </a><br>
 KritiShrestha <br>
-<a href="https://github.com/KritiShrestha/">
-<img src="https://avatars.githubusercontent.com/u/119089669?s=400&v=4"/>
-</a><br>
+<a href="https://github.com/KritiShrestha/bingo-class/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=KritiShrestha/bingo-class" />
+</a>
+
 >## License
 © 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
