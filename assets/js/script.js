@@ -1,6 +1,6 @@
 //Initializes jQuery & waits for DOM elements to load
 $(function() {
-    console.log("Page & jQuery initialized ✔️")
+   // console.log("Page & jQuery initialized ✔️")
 
     //calls the getInitialCity function
     getInitialCity();
@@ -14,7 +14,7 @@ $(function() {
 function getInitialCity() {
     //retrieves any city saved in local storage and sets to a new var named cityStored
     var cityStored = JSON.parse(localStorage.getItem("city"));
-    console.log("city stored: ", cityStored);
+  // console.log("city stored: ", cityStored);
 
   //makes sure there is at least one city to display initially
     if (cityStored === null) {
@@ -64,12 +64,12 @@ function clickListener() {
 
     //adds event listener for destination button click
     destBtn.click(function (event) {
-        console.log('button click event listener works ✔️')
+      //  console.log('button click event listener works ✔️')
         event.preventDefault()
 
         //creating var that specifies the text where the click event occurred
         var city = $(event.target).text();
-        console.log('event.target ✔️', $(event.target).text())
+      //  console.log('event.target ✔️', $(event.target).text())
 
         //saves new city to local storage 
 	      localStorage.setItem('city', JSON.stringify(city));
@@ -93,8 +93,9 @@ function clickListener() {
 function getGeocode(city) {
     //created a new var which strings together the base Teleport api url & the city var
     var geocodeUrl= 'https://api.teleport.org/api/cities/?search=' + city;
+    
     //logs the whole url
-    console.log('geocode url ✔️', geocodeUrl)
+    // console.log('geocode url ✔️', geocodeUrl)
 
     // fetches the geocode api url
     fetch(geocodeUrl)
@@ -103,17 +104,17 @@ function getGeocode(city) {
         })
         .then(function(data) {
             //logs the geocode Url data
-            console.log('geocode Url DATA: ✔️', data);
+          //  console.log('geocode Url DATA: ✔️', data);
 
             //names a var which holds the url containing the city's geoname ID
             var geohref = data._embedded["city:search-results"][0]._links["city:item"].href;
             //logs the url
-            console.log('geohref url ✔️', geohref);
+           // console.log('geohref url ✔️', geohref);
 
             //creates a var that holds a portion of the string after character 36, specifically the geoname ID portion at the endpoint
             var geonameID = geohref.substring(36)
             //logs the specific portion
-            console.log('geoname ID ✔️', geonameID)
+          //  console.log('geoname ID ✔️', geonameID)
 
             //calls the getCoordinates function & passes the geonameID var
             getCoordinates(geonameID);
@@ -123,7 +124,7 @@ function getGeocode(city) {
 function getCoordinates(geonameID) {
     //created a new var which strings together the base Teleport api url & the geoname ID var
     var coordinatesUrl = 'https://api.teleport.org/api/cities/' + geonameID;
-    console.log('coordinates Url ✔️', coordinatesUrl)
+  //  console.log('coordinates Url ✔️', coordinatesUrl)
     
     //fetches the coordinates api url
     fetch(coordinatesUrl)
@@ -132,15 +133,15 @@ function getCoordinates(geonameID) {
         })
         .then(function(data) {
             //logs the coordinates url data
-            console.log('coordinates Url DATA: ✔️', data);
+          //  console.log('coordinates Url DATA: ✔️', data);
 
         //creates a new var which holds the city's latitude aka the data's latitude property
         var lat= data.location.latlon.latitude;
-        console.log('Latitude: ✔️', lat);
+        // console.log('Latitude: ✔️', lat);
 
         //creates a new var which holds the city's latitude aka the data's latitude property
         var lon= data.location.latlon.longitude;
-        console.log('Longitude: ✔️', lon);
+        // console.log('Longitude: ✔️', lon);
 
         //creates a new var which contains the city population information and pushes it to the html page
         var population = data.population;
@@ -154,7 +155,7 @@ function getCoordinates(geonameID) {
 function getWeatherApi (lat, lon) {
     //created a new var which strings together the base OpenMeteo api url & the lat/lon vars
     var weatherUrl = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&hourly=temperature_2m,relativehumidity_2m,windspeed_10m&daily=weathercode,sunrise,sunset,precipitation_probability_max&current_weather=true&temperature_unit=fahrenheit&timezone=auto';
-    console.log('getWeatherApi Url: ✔️', weatherUrl)
+  //  console.log('getWeatherApi Url: ✔️', weatherUrl)
 
     //fetches the weather Api Url
     fetch(weatherUrl)
@@ -163,7 +164,7 @@ function getWeatherApi (lat, lon) {
         })
         .then(function(data) {
             //logs weather Url data
-            console.log('weather Url DATA: ✔️', data);
+          //  console.log('weather Url DATA: ✔️', data);
 
             //calls appenWeather function & passes data
             appendWeather(data);
@@ -209,7 +210,7 @@ function appendWeather(data) {
 
     // weather icon
     var weatherCode = data.current_weather.weathercode
-    console.log("WEATHERCODE", weatherCode)
+   // console.log("WEATHERCODE", weatherCode)
 
     //sets specific icon based on weather code
     if (weatherCode === 0) {
@@ -234,7 +235,7 @@ function appendWeather(data) {
   
 }
 function displayForecast(data) {
-    console.log("display forecast works")
+  //  console.log("display forecast works")
 
     var fiveForecastEl = $('#fiveDayForecast');
     
@@ -242,7 +243,7 @@ function displayForecast(data) {
     
 		var forecast = data.hourly;
 
-        console.log(forecast)
+      //  console.log(forecast)
 
 	    //Append cards for each forecast day to the screen 
 		for (let i = 36; i < 145; i+= 24) {
@@ -279,7 +280,7 @@ function getLocationFacts(city) {
     //converts the destination to lowercase letters which is needed for the API URL
     cityLowercase = city.toLowerCase()
     var APIUrl= 'https://api.teleport.org/api/urban_areas/slug:'+ cityLowercase + "/scores/"
-    console.log('getLocationFacts URL ✔️', APIUrl);
+   // console.log('getLocationFacts URL ✔️', APIUrl);
 
     //fetches the location facts api url
     fetch(APIUrl)
@@ -288,26 +289,26 @@ function getLocationFacts(city) {
         })
         .then(function(data) {
             //logs the location facts url data
-            console.log('location facts URL DATA: ✔️', data);
+          //  console.log('location facts URL DATA: ✔️', data);
 
         //get cost of living ranking and add text to the html page
         var costofLiving = data.categories[1]["score_out_of_10"];
-        console.log("location facts DATA Cost of Living", costofLiving);     
+       // console.log("location facts DATA Cost of Living", costofLiving);     
         $('#cost-of-living').text("Cost of Living: " + costofLiving.toFixed(2) + " out of 10");
         
         //get commute ranking and add text to the html page
         var commute = data.categories[5]["score_out_of_10"];
-        console.log("location facts DATA Commute", commute);   
+       // console.log("location facts DATA Commute", commute);   
         $('#commute').text("Commute: " + commute.toFixed(2) + " out of 10");
         
         //get safety ranking and add text to the html page
         var safety = data.categories[7]["score_out_of_10"];
-        console.log("location facts DATA Safety", safety); 
+       // console.log("location facts DATA Safety", safety); 
         $('#safety').text("Safety: " + safety.toFixed(2) + " out of 10");
 
         //get outoors ranking and add text to the html page
         var outdoors = data.categories[16]["score_out_of_10"];
-        console.log("location facts DATA Outdoors", outdoors); 
+      //  console.log("location facts DATA Outdoors", outdoors); 
         $('#outdoors').text("Outdoors: " + outdoors.toFixed(2) + " out of 10");
 
         })
@@ -317,7 +318,7 @@ function getCityPhotos(city) {
      //converts the destination to lowercase letters which is needed for the API URL
      cityLowercase = city.toLowerCase()
      var APIUrl= 'https://api.teleport.org/api/urban_areas/slug:'+ cityLowercase + "/images/"
-     console.log('getCityPhotos URL ✔️', APIUrl);
+     // console.log('getCityPhotos URL ✔️', APIUrl);
  
      //fetches the location facts api url
      fetch(APIUrl)
@@ -326,18 +327,18 @@ function getCityPhotos(city) {
          })
          .then(function(data) {
              //logs the location facts url data
-             console.log('City Photos URL DATA: ✔️', data);
+             // console.log('City Photos URL DATA: ✔️', data);
         
         //gets city image from API and adds to the html page
         var cityimage = data.photos[0].image.mobile;
-        console.log("getCityPhotos DATA image", cityimage);
+       // console.log("getCityPhotos DATA image", cityimage);
         $('#city-image').attr("src", cityimage);
         })
 }
 
 //functions displays the correct map when Modal button is clicked
 function getModal(city) {
-    console.log("TESTING", city)
+  //  console.log("TESTING", city)
 
     //creates var that references the class ID city-map in html
     var cityMap = $('.city-map')
