@@ -7,7 +7,7 @@ For this project, we built an application using JavaScript and Bulma that displa
 
 There is no installation required for this website. The webpage can be found by clicking the link below:
 
-![Link to Traveler Dashboard](https://kritishrestha.github.io/Traveler-Dashboard/)
+[Traveler Dashboard](https://kritishrestha.github.io/Traveler-Dashboard/)
 
 >## Usage
 The webpage displays the city information, current weather data and a 5-day forecast when the user selects a destination.
