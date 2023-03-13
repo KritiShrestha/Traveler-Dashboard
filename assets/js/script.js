@@ -178,6 +178,9 @@ function appendWeather(data) {
     var wind_speed = $('#wind-speed')
     var wind_direct = $('#wind-direction')
 
+    //Adding today's date in container header
+    $('#todays-date').text(': ' + dayjs().format('M/DD/YY'))
+
     //Weather Values
     temp.text('Temp: ' + data.current_weather.temperature + " F");
     wind_speed.text('Wind: ' + data.current_weather.windspeed + " mph")
@@ -242,7 +245,7 @@ function displayForecast(data) {
         console.log(forecast)
 
 	    //Append cards for each forecast day to the screen 
-		for (let i = 12; i < 109; i+= 24) {
+		for (let i = 36; i < 145; i+= 24) {
 
 		 	var divElCard = $('<div>');
 			divElCard.attr('class', 'column card');
