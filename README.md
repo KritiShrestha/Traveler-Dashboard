@@ -7,7 +7,7 @@ For this project, we built an application using JavaScript and Bulma that displa
 
 There is no installation required for this website. The webpage can be found by clicking the link below:
 
-![Link to Traveler Dashboard](insertlink)
+![Link to Traveler Dashboard](https://kritishrestha.github.io/Traveler-Dashboard/)
 
 >## Usage
 The webpage displays the city information, current weather data and a 5-day forecast when the user selects a destination.
@@ -53,7 +53,7 @@ THEN I am presented with a pop up modal of the city map
 
 The following image shows the web application's appearance and functionality:
 
-![Traveler-Dashboard-Demo](insert-demo-screenshot)
+![Traveler-Dashboard-Demo](./assets/images/Traveler-Dashboard-Demo.png)
 
 >## API Documentation
 [OpenMeteo](https://open-meteo.com/en/docs) </br>
