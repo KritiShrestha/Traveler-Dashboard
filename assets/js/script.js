@@ -182,7 +182,7 @@ function appendWeather(data) {
     $('#todays-date').text(': ' + dayjs().format('M/DD/YY'))
 
     //Weather Values
-    temp.text('Temp: ' + data.current_weather.temperature + " F");
+    temp.text('Temp: ' + data.current_weather.temperature + " °F");
     wind_speed.text('Wind: ' + data.current_weather.windspeed + " mph")
     
     var wind_spot = data.current_weather.winddirection
