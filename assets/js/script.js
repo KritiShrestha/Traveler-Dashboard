@@ -255,8 +255,6 @@ function displayForecast(data) {
 		 	divElBody.attr('class', 'card-body');
 		 	divElCard.append(divElBody);
 
-             console.log("forecast", forecast[i]);
-
             //Time
             var ptimeEl = $('<p>').text(dayjs(`${forecast.time[i]}`).format('M/DD/YY'))
             divElBody.append(ptimeEl);
