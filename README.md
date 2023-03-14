@@ -66,7 +66,7 @@ The following image shows the web application's appearance and functionality:
 
     2. Add diagrams to city facts section that show scores in a loaded bar type display
 
-    3. Create a "Top City" section where user can save a city as on of their favorites
+    3. Create a "Top City" section where user can save a city as one of their favorites
 
 
 
