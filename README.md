@@ -22,7 +22,6 @@ This app runs in the browser and features dynamically updated HTML and CSS power
   * Bulma
   * jQuery
   * day.js
-  * Google Fonts
   * FontAwesome
 
 >## User Story
